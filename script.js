@@ -1,162 +1,295 @@
-
-/*
-  HOTEL DIGITAL MENU
-
-  Edit item names and prices here.
-  Prices are in Indian rupees (₹).
-*/
+/* script.js */
 
 const menuData = {
-  // 10 BREAKFAST ITEMS
   breakfast: [
-    { name: "Plain Dosa", price: 50 },
-    { name: "Masala Dosa", price: 80 },
-    { name: "Idli (2 pieces)", price: 35 },
-    { name: "Vada (2 pieces)", price: 40 },
-    { name: "Idli Vada Combo", price: 55 },
-    { name: "Poha", price: 35 },
-    { name: "Upma", price: 40 },
-    { name: "Aloo Paratha", price: 60 },
-    { name: "Poori Bhaji", price: 55 },
-    { name: "Bread Omelette", price: 50 }
+    {
+      name: "Masala Dosa",
+      description: "Crispy rice crepe filled with spiced potato, served with sambar & chutney.",
+      price: 80,
+      image: "./dosa.avif",
+    },
+    {
+      name: "Idli (2 pieces)",
+      description: "Steamed rice cakes, soft and fluffy, served with sambar and coconut chutney.",
+      price: 35,
+      image: "./idli.jpg",
+    },
+    {
+      name: "Poha",
+      description: "Flattened rice tempered with turmeric, mustard seeds, and fresh coriander.",
+      price: 35,
+      image: "https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=200&q=80",
+    },
+    {
+      name: "Upma",
+      description: "Savory semolina porridge cooked with vegetables and aromatic spices.",
+      price: 40,
+      image: "https://images.pexels.com/photos/12737656/pexels-photo-12737656.jpeg?auto=compress&cs=tinysrgb&w=200",
+    },
+    {
+      name: "Aloo Paratha",
+      description: "Whole wheat flatbread stuffed with spiced potato, served with curd and pickle.",
+      price: 60,
+      image: "https://images.unsplash.com/photo-1626074353765-517a681e40be?auto=format&fit=crop&w=200&q=80",
+    },
   ],
-
-  // 30 LUNCH ITEMS
   lunch: [
-    { name: "Steamed Rice", price: 50 },
-    { name: "Jeera Rice", price: 80 },
-    { name: "Veg Pulao", price: 100 },
-    { name: "Veg Biryani", price: 120 },
-    { name: "Chicken Biryani", price: 180 },
-    { name: "Egg Biryani", price: 130 },
-    { name: "Dal Fry", price: 80 },
-    { name: "Dal Tadka", price: 100 },
-    { name: "Plain Dal", price: 50 },
-    { name: "Paneer Butter Masala", price: 160 },
-    { name: "Kadai Paneer", price: 170 },
-    { name: "Shahi Paneer", price: 180 },
-    { name: "Mix Veg Curry", price: 120 },
-    { name: "Aloo Gobi", price: 100 },
-    { name: "Chole Masala", price: 100 },
-    { name: "Rajma Masala", price: 110 },
-    { name: "Veg Kofta Curry", price: 140 },
-    { name: "Mushroom Masala", price: 150 },
-    { name: "Chicken Curry", price: 180 },
-    { name: "Butter Chicken", price: 220 },
-    { name: "Chicken Kadai", price: 210 },
-    { name: "Fish Curry", price: 190 },
-    { name: "Egg Curry", price: 100 },
-    { name: "Roti", price: 12 },
-    { name: "Butter Roti", price: 18 },
-    { name: "Plain Naan", price: 30 },
-    { name: "Butter Naan", price: 40 },
-    { name: "Plain Curd", price: 40 },
-    { name: "Green Salad", price: 50 },
-    { name: "Veg Thali", price: 140 }
+    {
+      name: "Veg Biryani",
+      description: "Fragrant basmati rice layered with mixed vegetables and saffron.",
+      price: 120,
+      image: "https://images.pexels.com/photos/7837978/pexels-photo-7837978.jpeg?auto=compress&cs=tinysrgb&w=200",
+    },
+    {
+      name: "Chicken Biryani",
+      description: "Aromatic rice cooked with tender chicken and traditional spices.",
+      price: 180,
+      image: "https://wsrv.nl/?url=upload.wikimedia.org%2Fwikipedia%2Fcommons%2F0%2F05%2F100%2525_Homemade_Biryani.jpg&w=200&output=webp",
+    },
+    {
+      name: "Dal Fry",
+      description: "Yellow lentils tempered with cumin, garlic, and onions.",
+      price: 80,
+      image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=200&q=80",
+    },
+    {
+      name: "Paneer Butter Masala",
+      description: "Cottage cheese cubes in a rich, creamy tomato gravy.",
+      price: 160,
+      image: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=200&q=80",
+    },
+    {
+      name: "Kadai Paneer",
+      description: "Paneer cooked with bell peppers and freshly ground kadai masala.",
+      price: 170,
+      image: "https://images.pexels.com/photos/12737656/pexels-photo-12737656.jpeg?auto=compress&cs=tinysrgb&w=200",
+    },
+    {
+      name: "Chicken Curry",
+      description: "Home-style chicken curry with a thick, spiced gravy.",
+      price: 180,
+      image: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=200&q=80",
+    },
+    {
+      name: "Butter Chicken",
+      description: "Tandoori chicken simmered in a velvety tomato-butter sauce.",
+      price: 220,
+      image: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=200&q=80",
+    },
+    {
+      name: "Fish Curry",
+      description: "Coastal-style fish curry with coconut and tamarind.",
+      price: 190,
+      image: "https://images.pexels.com/photos/12737656/pexels-photo-12737656.jpeg?auto=compress&cs=tinysrgb&w=200",
+    },
+    {
+      name: "Veg Thali",
+      description: "Assorted vegetarian dishes served with rice, roti, and dessert.",
+      price: 140,
+      image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=200&q=80",
+    },
+    {
+      name: "Jeera Rice",
+      description: "Basmati rice tempered with cumin seeds and ghee.",
+      price: 80,
+      image: "https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=200&q=80",
+    },
   ],
-
-  // 25 DINNER ITEMS
   dinner: [
-    { name: "Chapati", price: 12 },
-    { name: "Butter Chapati", price: 18 },
-    { name: "Plain Paratha", price: 30 },
-    { name: "Butter Naan", price: 40 },
-    { name: "Garlic Naan", price: 50 },
-    { name: "Tandoori Roti", price: 20 },
-    { name: "Steamed Rice", price: 50 },
-    { name: "Jeera Rice", price: 80 },
-    { name: "Veg Fried Rice", price: 100 },
-    { name: "Veg Biryani", price: 120 },
-    { name: "Paneer Butter Masala", price: 160 },
-    { name: "Kadai Paneer", price: 170 },
-    { name: "Palak Paneer", price: 150 },
-    { name: "Dal Tadka", price: 100 },
-    { name: "Dal Makhani", price: 140 },
-    { name: "Malai Kofta", price: 160 },
-    { name: "Mix Veg Curry", price: 120 },
-    { name: "Mushroom Masala", price: 150 },
-    { name: "Chicken Curry", price: 180 },
-    { name: "Butter Chicken", price: 220 },
-    { name: "Chicken Biryani", price: 180 },
-    { name: "Chicken Fried Rice", price: 150 },
-    { name: "Fish Curry", price: 190 },
-    { name: "Egg Curry", price: 100 },
-    { name: "Veg Thali", price: 140 }
-  ]
+    {
+      name: "Butter Chicken",
+      description: "Creamy tomato chicken curry, a dinner classic.",
+      price: 220,
+      image: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=200&q=80",
+    },
+    {
+      name: "Garlic Naan",
+      description: "Tandoor-baked flatbread topped with garlic and coriander.",
+      price: 50,
+      image: "https://images.unsplash.com/photo-1626074353765-517a681e40be?auto=format&fit=crop&w=200&q=80",
+    },
+    {
+      name: "Palak Paneer",
+      description: "Cottage cheese cubes in a smooth spinach gravy.",
+      price: 150,
+      image: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=200&q=80",
+    },
+    {
+      name: "Dal Makhani",
+      description: "Slow-cooked black lentils with butter and cream.",
+      price: 140,
+      image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=200&q=80",
+    },
+    {
+      name: "Chicken Biryani",
+      description: "Fragrant rice with marinated chicken, cooked dum-style.",
+      price: 180,
+      image: "https://wsrv.nl/?url=upload.wikimedia.org%2Fwikipedia%2Fcommons%2F0%2F05%2F100%2525_Homemade_Biryani.jpg&w=200&output=webp",
+    },
+    {
+      name: "Malai Kofta",
+      description: "Potato and paneer dumplings in a rich cashew gravy.",
+      price: 160,
+      image: "https://images.pexels.com/photos/12737656/pexels-photo-12737656.jpeg?auto=compress&cs=tinysrgb&w=200",
+    },
+    {
+      name: "Tandoori Roti",
+      description: "Whole wheat flatbread baked in a clay oven.",
+      price: 20,
+      image: "https://images.unsplash.com/photo-1626074353765-517a681e40be?auto=format&fit=crop&w=200&q=80",
+    },
+    {
+      name: "Egg Curry",
+      description: "Boiled eggs simmered in a spiced onion-tomato gravy.",
+      price: 100,
+      image: "https://images.pexels.com/photos/12737656/pexels-photo-12737656.jpeg?auto=compress&cs=tinysrgb&w=200",
+    },
+    {
+      name: "Veg Fried Rice",
+      description: "Stir-fried rice with crunchy vegetables and soy sauce.",
+      price: 100,
+      image: "https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=200&q=80",
+    },
+    {
+      name: "Fish Curry",
+      description: "Tangy fish curry with coconut milk and curry leaves.",
+      price: 190,
+      image: "https://images.pexels.com/photos/12737656/pexels-photo-12737656.jpeg?auto=compress&cs=tinysrgb&w=200",
+    },
+    {
+      name: "Mix Veg Curry",
+      description: "Seasonal vegetables cooked in a mild, spiced gravy.",
+      price: 120,
+      image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=200&q=80",
+    },
+    {
+      name: "Veg Thali",
+      description: "Complete meal with assorted curries, rice, and bread.",
+      price: 140,
+      image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=200&q=80",
+    },
+  ],
 };
 
-// Meal category names
 const mealLabels = {
-  breakfast: "Breakfast",
-  lunch: "Lunch",
-  dinner: "Dinner"
+  breakfast: "Popular Breakfasts",
+  lunch: "Main Courses",
+  dinner: "Dinner",
 };
 
-// Get HTML elements
-const menuList = document.getElementById("menu-list");
-const mealTitle = document.getElementById("meal-title");
-const itemCount = document.getElementById("item-count");
+const menuListEl = document.getElementById("menu-list");
+const sectionTitleEl = document.getElementById("section-title");
+const cartAmountEl = document.getElementById("cart-amount");
+const tabs = document.querySelectorAll(".tab");
 
-const mealTabs = document.querySelectorAll(".meal-tab");
+let cart = {};
 
-// Format prices as Indian rupees
 function formatPrice(price) {
   return new Intl.NumberFormat("en-IN", {
     style: "currency",
     currency: "INR",
-    maximumFractionDigits: 0
+    minimumFractionDigits: 2,
   }).format(price);
 }
 
-// Display the selected meal's menu
+function updateCartDisplay() {
+  const total = Object.values(cart).reduce((sum, item) => sum + item.price * item.qty, 0);
+  cartAmountEl.textContent = formatPrice(total);
+}
+
 function renderMenu(meal) {
   const items = menuData[meal];
+  sectionTitleEl.textContent = mealLabels[meal];
+  menuListEl.innerHTML = "";
 
-  // Update the heading and item count
-  mealTitle.textContent = mealLabels[meal];
-  itemCount.textContent = `${items.length} items`;
+  items.forEach((item, index) => {
+    const card = document.createElement("div");
+    card.className = "menu-card";
 
-  // Remove the previously displayed items
-  menuList.replaceChildren();
+    const img = document.createElement("img");
+    img.className = "menu-image";
+    img.src = item.image;
+    img.alt = item.name;
+    img.loading = "lazy";
 
-  // Create a row for each item
-  items.forEach((item) => {
-    const row = document.createElement("li");
-    row.className = "menu-item";
+    const info = document.createElement("div");
+    info.className = "menu-info";
 
-    const name = document.createElement("span");
-    name.className = "item-name";
+    const name = document.createElement("h3");
+    name.className = "menu-name";
     name.textContent = item.name;
 
+    const desc = document.createElement("p");
+    desc.className = "menu-desc";
+    desc.textContent = item.description;
+
+    const bottom = document.createElement("div");
+    bottom.className = "menu-bottom";
+
     const price = document.createElement("span");
-    price.className = "item-price";
+    price.className = "menu-price";
     price.textContent = formatPrice(item.price);
 
-    row.append(name, price);
-    menuList.appendChild(row);
+    const qtyControls = document.createElement("div");
+    qtyControls.className = "qty-controls";
+
+    const minusBtn = document.createElement("button");
+    minusBtn.className = "qty-btn";
+    minusBtn.textContent = "−";
+    minusBtn.setAttribute("aria-label", `Remove one ${item.name}`);
+
+    const qtyValue = document.createElement("span");
+    qtyValue.className = "qty-value";
+    qtyValue.textContent = cart[item.name]?.qty || 0;
+
+    const plusBtn = document.createElement("button");
+    plusBtn.className = "qty-btn";
+    plusBtn.textContent = "+";
+    plusBtn.setAttribute("aria-label", `Add one ${item.name}`);
+
+    // Quantity logic
+    plusBtn.addEventListener("click", () => {
+      if (!cart[item.name]) {
+        cart[item.name] = { ...item, qty: 1 };
+      } else {
+        cart[item.name].qty += 1;
+      }
+      qtyValue.textContent = cart[item.name].qty;
+      updateCartDisplay();
+    });
+
+    minusBtn.addEventListener("click", () => {
+      if (cart[item.name] && cart[item.name].qty > 0) {
+        cart[item.name].qty -= 1;
+        qtyValue.textContent = cart[item.name].qty;
+        if (cart[item.name].qty === 0) {
+          delete cart[item.name];
+        }
+        updateCartDisplay();
+      }
+    });
+
+    qtyControls.append(minusBtn, qtyValue, plusBtn);
+    bottom.append(price, qtyControls);
+    info.append(name, desc, bottom);
+    card.append(img, info);
+    menuListEl.appendChild(card);
   });
 
-  // Highlight the selected category
-  mealTabs.forEach((tab) => {
+  tabs.forEach((tab) => {
     const isActive = tab.dataset.meal === meal;
-
     tab.classList.toggle("active", isActive);
     tab.setAttribute("aria-pressed", String(isActive));
   });
 }
 
-// Add click events to all three category buttons
-mealTabs.forEach((tab) => {
+// Tab click handlers
+tabs.forEach((tab) => {
   tab.addEventListener("click", () => {
     renderMenu(tab.dataset.meal);
   });
 });
 
-// Display item counts on the category buttons
-Object.keys(menuData).forEach((meal) => {
-  document.getElementById(`${meal}-count`).textContent =
-    `${menuData[meal].length} items`;
-});
-
-// Display breakfast when the website first opens
+// Initial render
 renderMenu("breakfast");
+updateCartDisplay();

@@ -2,84 +2,51 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#173f35" />
-    <meta
-      name="description"
-      content="View our hotel breakfast, lunch and dinner menu with prices."
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#0b0b14" />
+    <meta name="description" content="Green Leaf Hotel digital menu – app style." />
     <title>Green Leaf Hotel | Digital Menu</title>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
   </head>
   <body>
-    <header class="hero">
-      <p class="eyebrow">WELCOME TO</p>
-      <h1 id="hotel-name">Green Leaf Hotel</h1>
-      <p class="subtitle">Good food. Good mood.</p>
-      <span class="menu-label">DIGITAL MENU</span>
-    </header>
+    <div class="app-shell">
+      <!-- Header -->
+      <header class="app-header">
+        <h1 class="app-title">Menu</h1>
+        <div class="cart-badge" id="cart-badge" aria-label="Cart total">
+          <span class="cart-icon">🛒</span>
+          <span class="cart-amount" id="cart-amount">₹0.00</span>
+        </div>
+      </header>
 
-    <main class="container">
-      <section class="intro">
-        <h2>Our Menu</h2>
-        <p>Choose a meal to see the available items and prices.</p>
-      </section>
+      <!-- Search -->
+      <div class="search-bar">
+        <span class="search-icon">🔍</span>
+        <input type="search" id="search-input" placeholder="Search for an item or category..." aria-label="Search menu" />
+      </div>
 
-      <nav class="meal-tabs" aria-label="Menu categories">
-        <button
-          class="meal-tab active"
-          type="button"
-          data-meal="breakfast"
-          aria-pressed="true"
-        >
-          Breakfast
-          <span class="tab-count" id="breakfast-count"></span>
-        </button>
-
-        <button
-          class="meal-tab"
-          type="button"
-          data-meal="lunch"
-          aria-pressed="false"
-        >
-          Lunch
-          <span class="tab-count" id="lunch-count"></span>
-        </button>
-
-        <button
-          class="meal-tab"
-          type="button"
-          data-meal="dinner"
-          aria-pressed="false"
-        >
-          Dinner
-          <span class="tab-count" id="dinner-count"></span>
-        </button>
+      <!-- Category Tabs (horizontal scroll) -->
+      <nav class="category-tabs" aria-label="Menu categories">
+        <button class="tab active" data-meal="breakfast" aria-pressed="true">Breakfast</button>
+        <button class="tab" data-meal="lunch" aria-pressed="false">Lunch</button>
+        <button class="tab" data-meal="dinner" aria-pressed="false">Dinner</button>
+        
       </nav>
 
-      <section class="menu-panel" aria-live="polite">
-        <div class="menu-heading-row">
-          <div>
-            <p class="section-kicker">FRESHLY PREPARED</p>
-            <h3 id="meal-title">Breakfast</h3>
-          </div>
+      <!-- Section heading -->
+      <div class="section-header">
+        <span class="fire-icon">🔥</span>
+        <h2 class="section-title" id="section-title">Popular Breakfasts</h2>
+      </div>
 
-          <p class="item-count" id="item-count">10 items</p>
-        </div>
+      <!-- Menu List -->
+      <main class="menu-list" id="menu-list" aria-live="polite"></main>
 
-        <ul class="menu-list" id="menu-list"></ul>
+      <!-- Bottom hint -->
+      <p class="bottom-hint">Select an item for details and allergen information.</p>
+    </div>
 
-        <p class="note">
-          Please ask our staff if you have questions about any item.
-        </p>
-      </section>
-
-    </main>
-
-    <footer>
-      <p id="footer-hotel-name">Green Leaf Hotel</p>
-      <p>Thank you for visiting us.</p>
-    </footer>
+    <script src="script.js"></script>
   </body>
 </html>
