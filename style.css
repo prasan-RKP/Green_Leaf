@@ -34,31 +34,30 @@ body {
   min-height: 100vh;
 }
 
-/* Header */
+/* Updated Header Styles */
 .app-header {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
+  justify-content: center;
+  margin-bottom: 24px;
+  padding: 10px 0 4px;
+  text-align: center;
 }
 
 .app-title {
+  color: var(--text);
   font-size: 1.8rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: -0.02em;
+  margin-bottom: 6px;
 }
 
-.cart-badge {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: var(--primary);
-  padding: 6px 12px;
-  border-radius: 20px;
+.welcome-text {
+  color: var(--text-secondary);
   font-size: 0.85rem;
-  font-weight: 600;
-  color: #fff;
-  box-shadow: 0 4px 12px rgba(108, 92, 231, 0.4);
+  line-height: 1.4;
+  max-width: 320px;
 }
 
 /* Search */
@@ -98,11 +97,11 @@ body {
   overflow-x: auto;
   padding-bottom: 4px;
   margin-bottom: 20px;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none;  /* IE */
+  scrollbar-width: none; 
+  -ms-overflow-style: none;  
 }
 .category-tabs::-webkit-scrollbar {
-  display: none; /* Chrome */
+  display: none; 
 }
 
 .tab {

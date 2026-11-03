@@ -179,7 +179,6 @@ const mealLabels = {
 
 const menuListEl = document.getElementById("menu-list");
 const sectionTitleEl = document.getElementById("section-title");
-const cartAmountEl = document.getElementById("cart-amount");
 const tabs = document.querySelectorAll(".tab");
 
 let cart = {};
@@ -190,11 +189,6 @@ function formatPrice(price) {
     currency: "INR",
     minimumFractionDigits: 2,
   }).format(price);
-}
-
-function updateCartDisplay() {
-  const total = Object.values(cart).reduce((sum, item) => sum + item.price * item.qty, 0);
-  cartAmountEl.textContent = formatPrice(total);
 }
 
 function renderMenu(meal) {
@@ -255,7 +249,6 @@ function renderMenu(meal) {
         cart[item.name].qty += 1;
       }
       qtyValue.textContent = cart[item.name].qty;
-      updateCartDisplay();
     });
 
     minusBtn.addEventListener("click", () => {
@@ -265,7 +258,6 @@ function renderMenu(meal) {
         if (cart[item.name].qty === 0) {
           delete cart[item.name];
         }
-        updateCartDisplay();
       }
     });
 
@@ -292,4 +284,3 @@ tabs.forEach((tab) => {
 
 // Initial render
 renderMenu("breakfast");
-updateCartDisplay();
