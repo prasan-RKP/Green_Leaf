@@ -179,6 +179,9 @@ const mealLabels = {
 
 const menuListEl = document.getElementById("menu-list");
 const sectionTitleEl = document.getElementById("section-title");
+const sectionHeader = document.getElementById("section-header");
+const bottomHint = document.getElementById("bottom-hint");
+const qrSection = document.getElementById("qr-section");
 const tabs = document.querySelectorAll(".tab");
 
 let cart = {};
@@ -192,6 +195,28 @@ function formatPrice(price) {
 }
 
 function renderMenu(meal) {
+  // If QR Pay tab is selected
+  if (meal === "qrpay") {
+    sectionHeader.classList.add("hidden");
+    menuListEl.classList.add("hidden");
+    bottomHint.classList.add("hidden");
+    qrSection.classList.remove("hidden");
+    
+    // Update Tab UI
+    tabs.forEach((tab) => {
+      const isActive = tab.dataset.meal === meal;
+      tab.classList.toggle("active", isActive);
+      tab.setAttribute("aria-pressed", String(isActive));
+    });
+    return;
+  }
+
+  // Otherwise, show normal menu items
+  sectionHeader.classList.remove("hidden");
+  menuListEl.classList.remove("hidden");
+  bottomHint.classList.remove("hidden");
+  qrSection.classList.add("hidden");
+
   const items = menuData[meal];
   sectionTitleEl.textContent = mealLabels[meal];
   menuListEl.innerHTML = "";

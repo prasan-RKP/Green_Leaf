@@ -11,7 +11,7 @@
   </head>
   <body>
     <div class="app-shell">
-      <!-- Updated Header -->
+      <!-- Header -->
       <header class="app-header">
         <h1 class="app-title">Green Leaf Hotel</h1>
         <p class="welcome-text">Welcome to our digital menu. Explore our delicious selection of freshly prepared meals.</p>
@@ -23,15 +23,16 @@
         <input type="search" id="search-input" placeholder="Search for an item or category..." aria-label="Search menu" />
       </div>
 
-      <!-- Category Tabs (horizontal scroll) -->
+      <!-- Category Tabs -->
       <nav class="category-tabs" aria-label="Menu categories">
         <button class="tab active" data-meal="breakfast" aria-pressed="true">Breakfast</button>
         <button class="tab" data-meal="lunch" aria-pressed="false">Lunch</button>
         <button class="tab" data-meal="dinner" aria-pressed="false">Dinner</button>
+        <button class="tab" data-meal="qrpay" aria-pressed="false">Pay Bill</button>
       </nav>
 
-      <!-- Section heading -->
-      <div class="section-header">
+      <!-- Section heading (Hidden on QRpay) -->
+      <div class="section-header" id="section-header">
         <span class="fire-icon">🔥</span>
         <h2 class="section-title" id="section-title">Popular Breakfasts</h2>
       </div>
@@ -39,8 +40,18 @@
       <!-- Menu List -->
       <main class="menu-list" id="menu-list" aria-live="polite"></main>
 
+      <!-- QR Code Section (Hidden by default) -->
+      <div id="qr-section" class="qr-section hidden">
+        <h2 class="section-title" style="text-align: center; margin-bottom: 20px;">Scan to Pay</h2>
+        <div class="qr-container">
+          <!-- Make sure your image is named qr-code.png and in the same folder -->
+          <img src="./QR.png" alt="Payment QR Code" class="qr-image" />
+        </div>
+        <p class="qr-hint">Open your UPI or banking app to scan and pay your bill.</p>
+      </div>
+
       <!-- Bottom hint -->
-      <p class="bottom-hint">Select an item for details and allergen information.</p>
+      <p class="bottom-hint" id="bottom-hint">Select an item for details and allergen information.</p>
     </div>
 
     <script src="script.js"></script>
