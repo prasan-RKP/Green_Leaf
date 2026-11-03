@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#173f35" />
+    <meta
+      name="description"
+      content="View our hotel breakfast, lunch and dinner menu with prices."
+    />
+    <title>Green Leaf Hotel | Digital Menu</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="hero">
+      <p class="eyebrow">WELCOME TO</p>
+      <h1 id="hotel-name">Green Leaf Hotel</h1>
+      <p class="subtitle">Good food. Good mood.</p>
+      <span class="menu-label">DIGITAL MENU</span>
+    </header>
+
+    <main class="container">
+      <section class="intro">
+        <h2>Our Menu</h2>
+        <p>Choose a meal to see the available items and prices.</p>
+      </section>
+
+      <nav class="meal-tabs" aria-label="Menu categories">
+        <button
+          class="meal-tab active"
+          type="button"
+          data-meal="breakfast"
+          aria-pressed="true"
+        >
+          Breakfast
+          <span class="tab-count" id="breakfast-count"></span>
+        </button>
+
+        <button
+          class="meal-tab"
+          type="button"
+          data-meal="lunch"
+          aria-pressed="false"
+        >
+          Lunch
+          <span class="tab-count" id="lunch-count"></span>
+        </button>
+
+        <button
+          class="meal-tab"
+          type="button"
+          data-meal="dinner"
+          aria-pressed="false"
+        >
+          Dinner
+          <span class="tab-count" id="dinner-count"></span>
+        </button>
+      </nav>
+
+      <section class="menu-panel" aria-live="polite">
+        <div class="menu-heading-row">
+          <div>
+            <p class="section-kicker">FRESHLY PREPARED</p>
+            <h3 id="meal-title">Breakfast</h3>
+          </div>
+
+          <p class="item-count" id="item-count">10 items</p>
+        </div>
+
+        <ul class="menu-list" id="menu-list"></ul>
+
+        <p class="note">
+          Please ask our staff if you have questions about any item.
+        </p>
+      </section>
+
+    </main>
+
+    <footer>
+      <p id="footer-hotel-name">Green Leaf Hotel</p>
+      <p>Thank you for visiting us.</p>
+    </footer>
+  </body>
+</html>
