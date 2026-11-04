@@ -149,6 +149,15 @@ body {
   gap: 14px;
 }
 
+.menu-empty {
+  padding: 20px;
+  color: var(--text-secondary);
+  text-align: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
 .menu-card {
   display: flex;
   background: var(--surface);
@@ -207,41 +216,6 @@ body {
   font-size: 0.95rem;
   font-weight: 700;
   color: var(--primary-light);
-}
-
-.qty-controls {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--surface-2);
-  border-radius: 20px;
-  padding: 4px 6px;
-}
-
-.qty-btn {
-  background: transparent;
-  border: none;
-  color: var(--text);
-  font-size: 1.1rem;
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  border-radius: 50%;
-  transition: background 0.2s;
-}
-
-.qty-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.qty-value {
-  font-size: 0.85rem;
-  font-weight: 600;
-  min-width: 16px;
-  text-align: center;
 }
 
 /* Bottom hint */

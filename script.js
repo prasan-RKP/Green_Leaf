@@ -183,8 +183,7 @@ const sectionHeader = document.getElementById("section-header");
 const bottomHint = document.getElementById("bottom-hint");
 const qrSection = document.getElementById("qr-section");
 const tabs = document.querySelectorAll(".tab");
-
-let cart = {};
+const searchInput = document.getElementById("search-input");
 
 function formatPrice(price) {
   return new Intl.NumberFormat("en-IN", {
@@ -217,11 +216,29 @@ function renderMenu(meal) {
   bottomHint.classList.remove("hidden");
   qrSection.classList.add("hidden");
 
-  const items = menuData[meal];
-  sectionTitleEl.textContent = mealLabels[meal];
+  const query = searchInput.value.trim().toLocaleLowerCase();
+  const items = query
+    ? Object.entries(menuData).flatMap(([category, categoryItems]) =>
+        categoryItems
+          .filter((item) =>
+            `${category} ${mealLabels[category]} ${item.name} ${item.description}`
+              .toLocaleLowerCase()
+              .includes(query),
+          )
+          .map((item) => item),
+      )
+    : menuData[meal];
+  sectionTitleEl.textContent = query ? "Search Results" : mealLabels[meal];
   menuListEl.innerHTML = "";
 
-  items.forEach((item, index) => {
+  if (items.length === 0) {
+    const emptyMessage = document.createElement("p");
+    emptyMessage.className = "menu-empty";
+    emptyMessage.textContent = `We don't have "${searchInput.value.trim()}" on our menu yet, but we'll add it soon!`;
+    menuListEl.appendChild(emptyMessage);
+  }
+
+  items.forEach((item) => {
     const card = document.createElement("div");
     card.className = "menu-card";
 
@@ -249,45 +266,7 @@ function renderMenu(meal) {
     price.className = "menu-price";
     price.textContent = formatPrice(item.price);
 
-    const qtyControls = document.createElement("div");
-    qtyControls.className = "qty-controls";
-
-    const minusBtn = document.createElement("button");
-    minusBtn.className = "qty-btn";
-    minusBtn.textContent = "−";
-    minusBtn.setAttribute("aria-label", `Remove one ${item.name}`);
-
-    const qtyValue = document.createElement("span");
-    qtyValue.className = "qty-value";
-    qtyValue.textContent = cart[item.name]?.qty || 0;
-
-    const plusBtn = document.createElement("button");
-    plusBtn.className = "qty-btn";
-    plusBtn.textContent = "+";
-    plusBtn.setAttribute("aria-label", `Add one ${item.name}`);
-
-    // Quantity logic
-    plusBtn.addEventListener("click", () => {
-      if (!cart[item.name]) {
-        cart[item.name] = { ...item, qty: 1 };
-      } else {
-        cart[item.name].qty += 1;
-      }
-      qtyValue.textContent = cart[item.name].qty;
-    });
-
-    minusBtn.addEventListener("click", () => {
-      if (cart[item.name] && cart[item.name].qty > 0) {
-        cart[item.name].qty -= 1;
-        qtyValue.textContent = cart[item.name].qty;
-        if (cart[item.name].qty === 0) {
-          delete cart[item.name];
-        }
-      }
-    });
-
-    qtyControls.append(minusBtn, qtyValue, plusBtn);
-    bottom.append(price, qtyControls);
+    bottom.append(price);
     info.append(name, desc, bottom);
     card.append(img, info);
     menuListEl.appendChild(card);
@@ -305,6 +284,11 @@ tabs.forEach((tab) => {
   tab.addEventListener("click", () => {
     renderMenu(tab.dataset.meal);
   });
+});
+
+searchInput.addEventListener("input", () => {
+  const activeTab = document.querySelector(".tab.active");
+  renderMenu(activeTab.dataset.meal);
 });
 
 // Initial render
